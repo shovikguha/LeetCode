@@ -1,6 +1,7 @@
 class Solution {
 public:
     vector<int> findSmallestSetOfVertices(int n, vector<vector<int>>& edges) {
+        //return nodes with indegree 0
         vector<int> in(n);
         
         for(vector<int> v : edges){
