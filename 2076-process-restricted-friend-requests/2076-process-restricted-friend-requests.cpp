@@ -43,6 +43,7 @@ public:
             ret = parent[ret];
         }
         
+        //path compression
         while (parent[i] != i) {
             int next = parent[i];
             parent[i] = ret;
