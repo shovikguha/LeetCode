@@ -8,7 +8,7 @@ public:
         
         for(int i =0; i < n; i++){
             while(!st.empty() && st.top().first < nums[i]){
-                auto p = st.top();
+                auto& p = st.top();
                 ret[p.second] = nums[i];
                 st.pop();
             }
@@ -17,7 +17,7 @@ public:
         
         for(int i =0; i < n; i++){
             while(!st.empty() && st.top().first < nums[i]){
-                auto p = st.top();
+                auto& p = st.top();
                 if(ret[p.second] == -1){
                     ret[p.second] = nums[i];
                 }
