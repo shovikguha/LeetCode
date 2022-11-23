@@ -18,6 +18,7 @@ public:
             mp[inorder[i]] = i;
         }
         
+        //preorder[0] is the root, everything left of inorder[preorder[i]] is left of i, same for right
         return build(0,0, inorder.size()-1, preorder, inorder, mp);
     }
     
@@ -29,7 +30,9 @@ public:
         TreeNode* curr = new TreeNode(pre[preStart]);
         int inIdx = mp[pre[preStart]];
         
+        //left will always be next index in preorder 
         curr -> left = build(preStart+1, inStart, inIdx - 1, pre, inorder, mp);
+        //right will be first value after all left nodes in preorder
         curr -> right = build(preStart + (inIdx - inStart) + 1, inIdx + 1, inEnd, pre, inorder, mp);
         
         return curr;
