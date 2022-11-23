@@ -21,6 +21,7 @@ public:
     
     void put(int key, int value) {
         auto it = key_mp.find(key);
+        //use mp.size() instead of list.size()
         if(key_mp.size() == cap && it == key_mp.end()){
             int rm = keys.back();
             keys.pop_back();
