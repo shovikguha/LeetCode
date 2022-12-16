@@ -12,17 +12,17 @@ public:
         int cnt = 0;
         int frst = 0;
         for(auto it = st.begin(); it != st.end(); it++){
-            if(cnt == 0 && it -> second == -1){
-                frst = it -> first;
-                cnt++;
-            }
-            else if(it -> second == -1){
+            if(it->second == -1){
+                if(cnt == 0){
+                    frst = it->first;
+                }
                 cnt++;
             }
             else{
                 cnt--;
                 if(cnt == 0){
-                    ret.push_back({frst, it -> first});
+                    ret.push_back({frst, it->first});
+                    cnt = 0;
                 }
             }
         }
