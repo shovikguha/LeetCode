@@ -7,15 +7,13 @@ public:
         int ret = -1;
         
         while(i < n && j < n){
-            if(mp.find(s[j]) == mp.end()){
-                mp[s[j]] = j;
-            }
-            else{
+            if(mp.find(s[j]) != mp.end()){
                 int len = j-i;
                 ret = max(ret, len);
                 i = max(i, mp[s[j]]+1);
                 mp[s[j]] = j;
             }
+            mp[s[j]] = j;
             j++;
         }
         
