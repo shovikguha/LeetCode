@@ -9,20 +9,24 @@ public:
     
     void addNum(int num) {
         mx.push(num);
-        mn.push(mx.top());
-        mx.pop();
+        if(mx.size() > mn.size()){
+            int tmp = mx.top();
+            mx.pop();
+            mn.push(tmp);
+        }
         if(mn.size() > mx.size()){
-            mx.push(mn.top());
+            int tmp = mn.top();
             mn.pop();
+            mx.push(tmp);
         }
     }
     
     double findMedian() {
-        if(mn.size() == mx.size()){
-            return (mn.top() + mx.top()) / (double)2.0;
+        if(mx.size() > mn.size()){
+            return mx.top();
         }
         else{
-            return mx.top();
+            return double(mx.top() + mn.top()) / 2;
         }
     }
 };
