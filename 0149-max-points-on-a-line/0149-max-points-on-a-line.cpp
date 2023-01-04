@@ -20,7 +20,6 @@ public:
             }
             ret = max(ret, count+1);
             ret = max(ret, vert);
-            cout << ret << " " << i <<endl;
         }
         
         return ret;
