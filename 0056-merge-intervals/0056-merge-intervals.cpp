@@ -2,27 +2,26 @@ class Solution {
 public:
     vector<vector<int>> merge(vector<vector<int>>& intervals) {
         multiset<pair<int,int>> st;
-        vector<vector<int>> ret;
         
-        for(auto& v : intervals){
+        for(vector<int> v : intervals){
             st.insert(make_pair(v[0], -1));
             st.insert(make_pair(v[1], 1));
         }
         
         int cnt = 0;
-        int frst = 0;
+        int first = 0;
+        vector<vector<int>> ret;
         for(auto it = st.begin(); it != st.end(); it++){
-            if(it->second == -1){
+            if(it -> second < 0){
                 if(cnt == 0){
-                    frst = it->first;
+                    first = it -> first;
                 }
                 cnt++;
             }
-            else{
+            else if(it -> second > 0){
                 cnt--;
                 if(cnt == 0){
-                    ret.push_back({frst, it->first});
-                    cnt = 0;
+                    ret.push_back({first, it->first});
                 }
             }
         }
